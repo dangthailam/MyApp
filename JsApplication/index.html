@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="rootController">
+<head>
+    <title>JS Application</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        .main-container {
+            padding-top: 70px;
+        }
+
+        pre:empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">JS Application</a>
+            </div>
+        </div>
+    </nav>
+
+    <div ui-view></div>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/oidc-token-manager/dist/oidc-token-manager.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script>
+        var myApp = angular.module('myApp', [
+            'ui.router',
+            'LocalStorageModule'
+        ]);
+    </script>
+    <script src="app/Config/appConfig.js"></script>
+    <script src="app/Services/ServiceBase.js"></script>
+    <script src="app/Services/AuthenticationService.js"></script>
+    <script src="app/Config/appContext.js"></script>
+    <script src="app/Controller/rootController.js"></script>
+    <script src="app/Controller/loginController.js"></script>
+    <script>
+
+        // helper function to show data to the user
+        function display(selector, data) {
+            if (data && typeof data === 'string') {
+                data = JSON.parse(data);
+            }
+            if (data) {
+                data = JSON.stringify(data, null, 2);
+            }
+
+            $(selector).text(data);
+        }
+
+        
+        manager.addOnTokenObtained(function () {
+            display('.js-access-token', { access_token: manager.access_token, expires_in: manager.expires_in });
+        });
+
+        $('.js-login').click(function () {
+
+            
+
+
+            //manager.redirectForToken();
+        });
+
+        $('.js-call-api').click(function () {
+            var headers = {};
+            if (manager.access_token) {
+                headers['Authorization'] = 'Bearer ' + manager.access_token;
+            }
+
+            $.ajax({
+                url: 'http://localhost:61016/values',
+                method: 'GET',
+                dataType: 'json',
+                headers: headers
+            }).then(function (data) {
+                display('.js-api-result', data);
+            }).fail(function (error) {
+                display('.js-api-result', {
+                    status: error.status,
+                    statusText: error.statusText,
+                    response: error.responseJSON
+                });
+            });
+        });
+
+        $('.js-logout').click(function () {
+            manager.redirectForLogout();
+        });
+
+        function checkSessionState() {
+            manager.oidcClient.loadMetadataAsync().then(function (meta) {
+                if (meta.check_session_iframe && manager.session_state) {
+                    document.getElementById("rp").src = "check_session.html#" +
+                        "session_state=" + manager.session_state +
+                        "&check_session_iframe=" + meta.check_session_iframe +
+                        "&client_id=" + config.client_id
+                    ;
+                }
+                else {
+                    document.getElementById("rp").src = "about:blank";
+                }
+            });
+        }
+
+        function showTokens() {
+            display(".js-id-token", manager.profile || "");
+            display(".js-access-token", manager.access_token && { access_token: manager.access_token, expires_in: manager.expires_in } || "");
+            checkSessionState();
+        }
+        showTokens();
+
+        function handleCallback() {
+            manager.processTokenCallbackAsync().then(function () {
+                var hash = window.location.hash.substr(1);
+                var result = hash.split('&').reduce(function (result, item) {
+                    var parts = item.split('=');
+                    result[parts[0]] = parts[1];
+                    return result;
+                }, {});
+                display("#response", result);
+
+                showTokens();
+            }, function (error) {
+                display("#response", error.message && { error: error.message } || error);
+            });
+        }
+
+        if (window.location.hash) {
+            handleCallback();
+        }
+
+    </script>
+
+</body>
+</html>
