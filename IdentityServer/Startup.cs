@@ -1,5 +1,12 @@
-﻿using IdentityServer3.Core.Configuration;
+﻿using IdentityManager.Configuration;
+using IdentityManager.Core.Logging;
+using IdentityManager.Logging;
+using IdentityServer.Context;
+using IdentityServer.Crtfc;
+using IdentityServer.UserService;
+using IdentityServer3.Core.Configuration;
 using Owin;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,22 +21,88 @@ namespace IdentityServer
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseIdentityServer(new IdentityServerOptions
+            LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
+            Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Debug()
+               .WriteTo.Trace()
+               .CreateLogger();
+
+            app.Map("/admin", adminApp =>
             {
-                SiteName = "Embedded IdentityServer",
-                SigningCertificate = LoadCertificate(),
-                
-                Factory = new IdentityServerServiceFactory()
-                    .UseInMemoryUsers(Users.Get())
-                    .UseInMemoryClients(Clients.Get())
-                    .UseInMemoryScopes(Scopes.Get())
+                var factory = new IdentityManagerServiceFactory();
+                factory.ConfigureCustomIdentityManagerService("MyApplication");
+
+                adminApp.UseIdentityManager(new IdentityManagerOptions()
+                {
+                    Factory = factory
+                });
             });
+
+            app.Map("/core", core =>
+            {
+                var idSvrFactory = Factory.Configure();
+                idSvrFactory.ConfigureCustomUserService("MyApplication");
+
+                var options = new IdentityServerOptions
+                {
+                    SiteName = "IdentityServer3 - UserService-AspNetIdentity",
+                    SigningCertificate = Certificate.Get(),
+                    Factory = idSvrFactory,
+                    AuthenticationOptions = new AuthenticationOptions
+                    {
+                        IdentityProviders = ConfigureAdditionalIdentityProviders,
+                    }
+                };
+
+                core.UseIdentityServer(options);
+            });
+
+            //app.UseIdentityServer(new IdentityServerOptions
+            //{
+            //    SiteName = "Embedded IdentityServer",
+            //    SigningCertificate = LoadCertificate(),
+                
+            //    Factory = new IdentityServerServiceFactory()
+            //        .UseInMemoryUsers(Users.Get())
+            //        .UseInMemoryClients(Clients.Get())
+            //        .UseInMemoryScopes(Scopes.Get())
+            //});
         }
 
-        X509Certificate2 LoadCertificate()
+        public static void ConfigureAdditionalIdentityProviders(IAppBuilder app, string signInAsType)
         {
-            return new X509Certificate2(
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"bin\idsrv3test.pfx"), "idsrv3test");
+            //var google = new GoogleOAuth2AuthenticationOptions
+            //{
+            //    AuthenticationType = "Google",
+            //    SignInAsAuthenticationType = signInAsType,
+            //    ClientId = "767400843187-8boio83mb57ruogr9af9ut09fkg56b27.apps.googleusercontent.com",
+            //    ClientSecret = "5fWcBT0udKY7_b6E3gEiJlze"
+            //};
+            //app.UseGoogleAuthentication(google);
+
+            //var fb = new FacebookAuthenticationOptions
+            //{
+            //    AuthenticationType = "Facebook",
+            //    SignInAsAuthenticationType = signInAsType,
+            //    AppId = "676607329068058",
+            //    AppSecret = "9d6ab75f921942e61fb43a9b1fc25c63"
+            //};
+            //app.UseFacebookAuthentication(fb);
+
+            //var twitter = new TwitterAuthenticationOptions
+            //{
+            //    AuthenticationType = "Twitter",
+            //    SignInAsAuthenticationType = signInAsType,
+            //    ConsumerKey = "N8r8w7PIepwtZZwtH066kMlmq",
+            //    ConsumerSecret = "df15L2x6kNI50E4PYcHS0ImBQlcGIt6huET8gQN41VFpUCwNjM"
+            //};
+            //app.UseTwitterAuthentication(twitter);
         }
+
+        //X509Certificate2 LoadCertificate()
+        //{
+        //    return new X509Certificate2(
+        //        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"bin\idsrv3test.pfx"), "idsrv3test");
+        //}
     }
 }
