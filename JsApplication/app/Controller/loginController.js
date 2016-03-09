@@ -6,18 +6,11 @@
             RememberMe: false
         };
 
-        console.log(config);
-
         $scope.login = function () {
-            console.log($scope.UserLogin);
-
             AuthenticationService.Login($scope.UserLogin, "openid profile email api").then(function (data) {
-                console.log(data.access_token);
-                localStorageService.set('bearerToken', data.access_token);
+                localStorageService.set('authorizationData', { token: data.access_token, userName: $scope.UserLogin.Email, refreshToken: "", useRefreshTokens: false });
                 $scope.$emit('onAuthenticated');
             });
         };
-
-
     }
 ]);

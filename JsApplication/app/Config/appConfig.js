@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 var settings = {
-    authority: "https://localhost:44300/",
+    authority: "https://localhost:44300/core/",
     client_id: "js",
     client_secret: "secret",
     redirect_uri: window.location.protocol + "//" + window.location.host + "/index.html",
