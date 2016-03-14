@@ -1,7 +1,7 @@
-﻿myApp.controller('rootController', ['$scope', function ($scope) {
-    $scope.authenticated = false;
+﻿myApp.controller('rootController', ['$scope', 'AuthenticationService', function ($scope, AuthenticationService) {
+    $scope.authentication = AuthenticationService.Authentication;
 
-    $scope.$on('onAuthenticated', function (event) {
-        $scope.authenticated = true;
-    });
+    $scope.logout = function () {
+        AuthenticationService.Logout();
+    };
 }]);

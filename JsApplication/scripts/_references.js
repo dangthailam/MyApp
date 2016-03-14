@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../app/config/appconfig.js" />
 /// <reference path="../app/config/appcontext.js" />
+/// <reference path="../app/controller/homecontroller.js" />
 /// <reference path="../app/controller/logincontroller.js" />
 /// <reference path="../app/controller/rootcontroller.js" />
 /// <reference path="../app/services/authenticationservice.js" />

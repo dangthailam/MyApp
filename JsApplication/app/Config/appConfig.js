@@ -26,17 +26,20 @@ var settings = {
 
 var manager = new OidcTokenManager(settings);
 
+manager.oidcClient.loadMetadataAsync();
+
 myApp.value('config', manager);
 
 myApp.factory('httpInterceptor', ['$q', '$rootScope', '$log', '$timeout', 'localStorageService',
             function ($q, $rootScope, $log, $timeout, localStorageService) {
                 return {
                     request: function (config) {
-                        console.log('bearer : ');
-                        console.log(localStorageService.get('bearerToken'));
                         config.headers = config.headers || {};
-                        if (localStorageService.get('bearerToken')) {
-                            config.headers.Authorization = 'Bearer ' + localStorageService.get('bearerToken');
+
+                        var authData = localStorageService.get('authorizationData');
+
+                        if (authData) {
+                            config.headers.Authorization = 'Bearer ' + authData.token;
                         }
                         return config;
                     },
@@ -47,11 +50,28 @@ myApp.factory('httpInterceptor', ['$q', '$rootScope', '$log', '$timeout', 'local
                         return response || $q.when(response);
                     },
                     responseError: function (response) {
-                        return $q.reject(response);
+                        if (rejection.status === 401) {
+                            var authService = $injector.get('authService');
+                            var authData = localStorageService.get('authorizationData');
+
+                            if (authData) {
+                                if (authData.useRefreshTokens) {
+                                    $location.path('/refresh');
+                                    return $q.reject(rejection);
+                                }
+                            }
+                            authService.logOut();
+                            $location.path('/login');
+                        }
+                        return $q.reject(rejection);
                     }
                 };
             }]);
 
 myApp.config(["$httpProvider", function ($httpProvider) {
     $httpProvider.interceptors.push('httpInterceptor');
+}]);
+
+myApp.run(['AuthenticationService', function (AuthenticationService) {
+    AuthenticationService.FillAuthData();
 }]);
