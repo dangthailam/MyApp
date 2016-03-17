@@ -3,6 +3,7 @@
 /// <reference path="../app/config/appcontext.js" />
 /// <reference path="../app/controller/homecontroller.js" />
 /// <reference path="../app/controller/logincontroller.js" />
+/// <reference path="../app/controller/registercontroller.js" />
 /// <reference path="../app/controller/rootcontroller.js" />
 /// <reference path="../app/services/authenticationservice.js" />
 /// <reference path="../app/services/servicebase.js" />

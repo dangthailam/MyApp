@@ -51,7 +51,6 @@
 
     var _logout = function () {
         localStorageService.remove('authorizationData');
-
         _authentication.isAuth = false;
         _authentication.userName = "";
         _authentication.useRefreshTokens = false;

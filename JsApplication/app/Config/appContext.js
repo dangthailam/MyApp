@@ -15,6 +15,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             url: "/login",
             templateUrl: "Views/Login/LoginPage.html",
             controller: "loginController"
+        })
+        .state('register', {
+            url: "/register",
+            templateUrl: "Views/Register/RegisterPage.html",
+            controller: "registerController"
         });
     //.state('state2', {
     //    url: "/state2",
