@@ -422,12 +422,6 @@
     <Content Include="bower_components\angular\bower.json" />
     <Content Include="bower_components\angular\package.json" />
     <Content Include="bower_components\angular\README.md" />
-    <Content Include="bower_components\angular-ui-router\.bower.json" />
-    <Content Include="bower_components\angular-ui-router\bower.json" />
-    <Content Include="bower_components\angular-ui-router\CHANGELOG.md" />
-    <Content Include="bower_components\angular-ui-router\CONTRIBUTING.md" />
-    <Content Include="bower_components\angular-ui-router\LICENSE" />
-    <Content Include="bower_components\angular-ui-router\README.md" />
     <Content Include="bower_components\angular-local-storage\.bower.json" />
     <Content Include="bower_components\angular-local-storage\.bowerrc" />
     <Content Include="bower_components\angular-local-storage\.editorconfig" />
@@ -438,6 +432,12 @@
     <Content Include="bower_components\angular-local-storage\LICENSE" />
     <Content Include="bower_components\angular-local-storage\package.json" />
     <Content Include="bower_components\angular-local-storage\README.md" />
+    <Content Include="bower_components\angular-ui-router\.bower.json" />
+    <Content Include="bower_components\angular-ui-router\bower.json" />
+    <Content Include="bower_components\angular-ui-router\CHANGELOG.md" />
+    <Content Include="bower_components\angular-ui-router\CONTRIBUTING.md" />
+    <Content Include="bower_components\angular-ui-router\LICENSE" />
+    <Content Include="bower_components\angular-ui-router\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
