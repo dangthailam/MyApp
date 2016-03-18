@@ -12,6 +12,7 @@
   "dependencies": {
     "jquery": "^2.2.1"
   },
+  "ignore": [],
   "devDependencies": {
     "bootstrap": "^3.3.6",
     "oidc-token-manager": "^1.2.0"

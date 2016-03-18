@@ -138,19 +138,6 @@
     <Content Include="bower_components\angular-local-storage\dist\angular-local-storage.js" />
     <Content Include="bower_components\angular-local-storage\dist\angular-local-storage.min.js" />
     <Content Include="bower_components\angular-local-storage\index.js" />
-    <Content Include="bower_components\angular-ui-router\release\angular-ui-router.js" />
-    <Content Include="bower_components\angular-ui-router\release\angular-ui-router.min.js" />
-    <Content Include="bower_components\angular-ui-router\src\common.js" />
-    <Content Include="bower_components\angular-ui-router\src\resolve.js" />
-    <Content Include="bower_components\angular-ui-router\src\state.js" />
-    <Content Include="bower_components\angular-ui-router\src\stateDirectives.js" />
-    <Content Include="bower_components\angular-ui-router\src\stateFilters.js" />
-    <Content Include="bower_components\angular-ui-router\src\templateFactory.js" />
-    <Content Include="bower_components\angular-ui-router\src\urlMatcherFactory.js" />
-    <Content Include="bower_components\angular-ui-router\src\urlRouter.js" />
-    <Content Include="bower_components\angular-ui-router\src\view.js" />
-    <Content Include="bower_components\angular-ui-router\src\viewDirective.js" />
-    <Content Include="bower_components\angular-ui-router\src\viewScroll.js" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
     <Content Include="bower_components\angular\angular.min.js" />
@@ -432,12 +419,6 @@
     <Content Include="bower_components\angular-local-storage\LICENSE" />
     <Content Include="bower_components\angular-local-storage\package.json" />
     <Content Include="bower_components\angular-local-storage\README.md" />
-    <Content Include="bower_components\angular-ui-router\.bower.json" />
-    <Content Include="bower_components\angular-ui-router\bower.json" />
-    <Content Include="bower_components\angular-ui-router\CHANGELOG.md" />
-    <Content Include="bower_components\angular-ui-router\CONTRIBUTING.md" />
-    <Content Include="bower_components\angular-ui-router\LICENSE" />
-    <Content Include="bower_components\angular-ui-router\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -451,6 +432,7 @@
     <None Include="scripts\_references.js" />
     <Content Include="index.html" />
     <Content Include="popup.html" />
+    <Content Include="scripts\angular-ui-router.js" />
     <Content Include="silent-renew.html" />
     <Content Include="Views\Home\Home.html" />
     <Content Include="Views\Login\LoginPage.html" />
