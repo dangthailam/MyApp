@@ -1,5 +1,5 @@
 ﻿'use strict';
-myApp.config(function ($stateProvider, $urlRouterProvider) {
+myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
     //
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
@@ -21,6 +21,8 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: "Views/Register/RegisterPage.html",
             controller: "registerController"
         });
+
+    $locationProvider.html5Mode(true);
     //.state('state2', {
     //    url: "/state2",
     //    templateUrl: "partials/state2.html"
@@ -32,4 +34,4 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     //        $scope.things = ["A", "Set", "Of", "Things"];
     //    }
     //});
-});
+}]);

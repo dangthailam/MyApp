@@ -18,7 +18,7 @@ namespace IdentityServer
                     Enabled = true,
                     ClientName = "JS Client",
                     ClientId = "js",
-                    Flow = Flows.ResourceOwner,
+                    Flow = Flows.Implicit,
 
                     RedirectUris = new List<string>
                     {

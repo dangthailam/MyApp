@@ -8,7 +8,7 @@ using System.Web.Http;
 namespace Api.API
 {
     [Route("values")]
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ApiController
     {
         public IEnumerable<string> Get()

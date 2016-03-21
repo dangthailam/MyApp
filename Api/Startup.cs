@@ -25,7 +25,6 @@ namespace Api
                 // For access to the introspection endpoint
                 ClientId = "api",
                 ClientSecret = "api-secret",
-
                 RequiredScopes = new[] { "api" }
             });
 
