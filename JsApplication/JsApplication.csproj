@@ -128,7 +128,6 @@
     <Content Include="app\Controller\loginController.js" />
     <Content Include="app\Controller\registerController.js" />
     <Content Include="app\Controller\rootController.js" />
-    <Content Include="app\Services\AuthenticationService.js" />
     <Content Include="app\Services\ServiceBase.js" />
     <Content Include="bower_components\angular-local-storage\.gitattributes" />
     <Content Include="bower_components\angular-local-storage\.gitignore" />

@@ -5,7 +5,6 @@
 /// <reference path="../app/controller/logincontroller.js" />
 /// <reference path="../app/controller/registercontroller.js" />
 /// <reference path="../app/controller/rootcontroller.js" />
-/// <reference path="../app/services/authenticationservice.js" />
 /// <reference path="../app/services/servicebase.js" />
 /// <reference path="../bower_components/angular/angular.js" />
 /// <reference path="../bower_components/angular-local-storage/dist/angular-local-storage.js" />
