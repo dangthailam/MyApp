@@ -31,29 +31,20 @@ namespace IdentityServer.Controller
 
         [Route("register")]
         [HttpPost]
-        public async Task<IHttpActionResult> Register(RegisterUserViewModel createUserModel)
+        public async Task<IHttpActionResult> Register(string userName, string password)
         {
-            if (!ModelState.IsValid)
+            IdentityResult addUserResult = await CustomUserManager.CreateAsync(new CustomUser()
             {
-                return BadRequest(ModelState);
-            }
-
-            var user = new CustomUser()
-            {
-                UserName = createUserModel.Email,
-                Email = createUserModel.Email
-            };
-
-            IdentityResult addUserResult = await CustomUserManager.CreateAsync(user, createUserModel.Password);
+                UserName = userName,
+                Email = userName
+            }, password);
 
             if (!addUserResult.Succeeded)
             {
                 return GetErrorResult(addUserResult);
             }
 
-            Uri locationHeader = new Uri(Url.Link("GetUserById", new { id = user.Id }));
-
-            return Created(locationHeader, addUserResult);
+            return Ok();
         }
     }
 }

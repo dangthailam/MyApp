@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,7 +11,7 @@ namespace Api.API
     public class AccountController : ApiController
     {
         [Route("api/account/create")]
-        public IHttpActionResult Register()
+        public IHttpActionResult Register(RegisterUserViewModel registerUser)
         {
 
 

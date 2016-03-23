@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IdentityServer.Models
+namespace Api.Models
 {
     public class RegisterUserViewModel
     {

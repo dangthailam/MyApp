@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{6DA8A02D-A61C-49CA-863D-6D9AA101D7E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{AE58F010-DD94-4E7E-9918-02EE0E6AE945}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6DA8A02D-A61C-49CA-863D-6D9AA101D7E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DA8A02D-A61C-49CA-863D-6D9AA101D7E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DA8A02D-A61C-49CA-863D-6D9AA101D7E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE58F010-DD94-4E7E-9918-02EE0E6AE945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE58F010-DD94-4E7E-9918-02EE0E6AE945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE58F010-DD94-4E7E-9918-02EE0E6AE945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE58F010-DD94-4E7E-9918-02EE0E6AE945}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
