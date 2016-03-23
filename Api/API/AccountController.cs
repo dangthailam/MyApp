@@ -12,6 +12,8 @@ namespace Api.API
         [Route("api/account/create")]
         public IHttpActionResult Register()
         {
+
+
             return Ok();
         }
     }

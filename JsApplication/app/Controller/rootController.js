@@ -17,6 +17,7 @@
                     token: result.access_token,
                     userName: oidcManager.profile.preferred_username
                 });
+
                 $scope.authInfo = localStorageService.get('authorizationData');
                 $scope.$apply();
             });

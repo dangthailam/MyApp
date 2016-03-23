@@ -19,9 +19,9 @@ namespace IdentityServer.Context
 
     public static class CustomIdentityManagerServiceExtensions
     {
-        public static void ConfigureCustomIdentityManagerService(this IdentityManagerServiceFactory factory, string connectionString)
+        public static void ConfigureCustomIdentityManagerService(this IdentityManagerServiceFactory factory)
         {
-            factory.Register(new Registration<ApplicationDbContext>(resolver => new ApplicationDbContext(connectionString)));
+            factory.Register(new Registration<ApplicationDbContext>(resolver => new ApplicationDbContext()));
             factory.Register(new Registration<CustomUserStore>());
             factory.Register(new Registration<CustomRoleStore>());
             factory.Register(new Registration<CustomUserManager>());

@@ -12,12 +12,12 @@ namespace IdentityServer.UserService
 {
     public static class UserServiceExtensions
     {
-        public static void ConfigureCustomUserService(this IdentityServerServiceFactory factory, string connString)
+        public static void ConfigureCustomUserService(this IdentityServerServiceFactory factory)
         {
             factory.UserService = new Registration<IUserService, UserService>();
             factory.Register(new Registration<CustomUserManager>());
             factory.Register(new Registration<CustomUserStore>());
-            factory.Register(new Registration<ApplicationDbContext>(resolver => new ApplicationDbContext(connString)));
+            factory.Register(new Registration<ApplicationDbContext>(resolver => new ApplicationDbContext()));
         }
     }
 

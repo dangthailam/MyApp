@@ -17,9 +17,11 @@ namespace IdentityServer.Controller
     {
         private CustomUserManager _customUserManager;
 
-        public CustomUserManager CustomUserManager { get
+        public CustomUserManager CustomUserManager
+        {
+            get
             {
-                if(_customUserManager == null)
+                if (_customUserManager == null)
                 {
                     _customUserManager = Request.GetOwinContext().GetUserManager<CustomUserManager>();
                 }

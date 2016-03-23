@@ -21,6 +21,10 @@ namespace IdentityServer
     {
         public void Configuration(IAppBuilder app)
         {
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<CustomUserManager>(CustomUserManager.Create);
+            app.CreatePerOwinContext<CustomSignInManager>(CustomSignInManager.Create);
+
             LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
             Log.Logger = new LoggerConfiguration()
                .MinimumLevel.Debug()
@@ -30,7 +34,7 @@ namespace IdentityServer
             app.Map("/admin", adminApp =>
             {
                 var factory = new IdentityManagerServiceFactory();
-                factory.ConfigureCustomIdentityManagerService("MyApplication");
+                factory.ConfigureCustomIdentityManagerService();
 
                 adminApp.UseIdentityManager(new IdentityManagerOptions()
                 {
@@ -41,7 +45,7 @@ namespace IdentityServer
             app.Map("/core", core =>
             {
                 var idSvrFactory = Factory.Configure();
-                idSvrFactory.ConfigureCustomUserService("MyApplication");
+                idSvrFactory.ConfigureCustomUserService();
 
                 var options = new IdentityServerOptions
                 {
