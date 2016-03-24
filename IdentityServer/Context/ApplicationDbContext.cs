@@ -23,6 +23,7 @@ namespace IdentityServer.Context
             return userIdentity;
         }
     }
+
     public class CustomUserLogin : IdentityUserLogin<int> { }
     public class CustomUserRole : IdentityUserRole<int> { }
     public class CustomUserClaim : IdentityUserClaim<int> { }

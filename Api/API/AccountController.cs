@@ -10,6 +10,8 @@ namespace Api.API
 {
     public class AccountController : ApiController
     {
+
+
         [Route("api/account/create")]
         public IHttpActionResult Register(RegisterUserViewModel registerUser)
         {

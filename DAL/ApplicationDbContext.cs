@@ -1,4 +1,5 @@
-﻿using DAL.Entities;
+﻿using DAL.DataContext;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IDbContext
     {
         public ApplicationDbContext() : base("name=MyApplication_API")
         {
