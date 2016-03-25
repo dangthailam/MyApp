@@ -7,6 +7,7 @@ using System.Web.Http;
 
 namespace Api.API
 {
+    [AllowAnonymous]
     [Route("values")]
     //[Authorize]
     public class ValuesController : ApiController

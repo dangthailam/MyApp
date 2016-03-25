@@ -20,20 +20,21 @@ namespace Api
             // Wire token validation
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
-                Authority = "https://localhost:44300",
+                Authority = "https://localhost:44300/core",
 
                 // For access to the introspection endpoint
                 ClientId = "api",
                 ClientSecret = "api-secret",
-                RequiredScopes = new[] { "api" }
+                RequiredScopes = new[] { "api" },
+                
             });
 
             // Wire Web API
-            var httpConfiguration = new HttpConfiguration();
-            httpConfiguration.MapHttpAttributeRoutes();
-            httpConfiguration.Filters.Add(new AuthorizeAttribute());
+            //var httpConfiguration = new HttpConfiguration();
+            //httpConfiguration.MapHttpAttributeRoutes();
+            //httpConfiguration.Filters.Add(new AuthorizeAttribute());
 
-            app.UseWebApi(httpConfiguration);
+            //app.UseWebApi(httpConfiguration);
         }
     }
 }

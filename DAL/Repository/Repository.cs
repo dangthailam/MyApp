@@ -1,10 +1,6 @@
 ﻿using DAL.DataContext;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
@@ -12,7 +8,7 @@ namespace DAL.Repository
     {
         private IDbContext _dbContext;
 
-        private IDbSet<TEntity> _dbSet;
+        private DbSet<TEntity> _dbSet;
 
         public Repository(IDbContext dbContext)
         {
@@ -32,44 +28,15 @@ namespace DAL.Repository
             _dbSet.Remove(entity);
         }
 
-        public virtual void Delete(object id)
-        {
-            Delete(_dbSet.Find(id));
-        }
-
-        public void DeleteRange(ICollection<TEntity> list)
-        {
-            throw new NotImplementedException();
-        }
-
         public TEntity Find(params object[] keyValues)
         {
             return _dbSet.Find(keyValues);
         }
-
-        public IRepository<T> GetRepository<T>() where T : class
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InsertRange(IEnumerable<TEntity> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<TEntity> Queryable()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<TEntity> SelectQuery(string query, params object[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Attach(entity);
+            (_dbContext as DbContext).Entry(entity).State = EntityState.Modified;
         }
     }
 }

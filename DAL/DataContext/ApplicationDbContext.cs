@@ -16,6 +16,6 @@ namespace DAL
 
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<UserEntity> User { get; set; }
     }
 }
