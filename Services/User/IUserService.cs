@@ -1,4 +1,4 @@
-﻿namespace Services.User
+﻿namespace App.Services.User
 {
     public interface IUserService
     {

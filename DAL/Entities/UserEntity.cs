@@ -28,5 +28,7 @@ namespace DAL.Entities
         public string DoB { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        public string Address { get; set; }
     }
 }

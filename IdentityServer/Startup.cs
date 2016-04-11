@@ -14,6 +14,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace IdentityServer
 {
@@ -61,11 +62,22 @@ namespace IdentityServer
                 core.UseIdentityServer(options);
             });
 
+            var httpConfiguration = new HttpConfiguration();
+            httpConfiguration.MapHttpAttributeRoutes();
+
+            httpConfiguration.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            app.UseWebApi(httpConfiguration);
+
             //app.UseIdentityServer(new IdentityServerOptions
             //{
             //    SiteName = "Embedded IdentityServer",
             //    SigningCertificate = LoadCertificate(),
-                
+
             //    Factory = new IdentityServerServiceFactory()
             //        .UseInMemoryUsers(Users.Get())
             //        .UseInMemoryClients(Clients.Get())

@@ -30,11 +30,7 @@ namespace Api
             });
 
             // Wire Web API
-            //var httpConfiguration = new HttpConfiguration();
-            //httpConfiguration.MapHttpAttributeRoutes();
-            //httpConfiguration.Filters.Add(new AuthorizeAttribute());
 
-            //app.UseWebApi(httpConfiguration);
         }
     }
 }

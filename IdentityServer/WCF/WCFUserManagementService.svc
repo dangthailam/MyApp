@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="IdentityServer.WCF.WCFUserManagementService" CodeBehind="WCFUserManagementService.svc.cs" %>

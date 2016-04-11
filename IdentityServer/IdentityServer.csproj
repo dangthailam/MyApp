@@ -206,6 +206,7 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="WCF\WCFUserManagementService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -228,6 +229,10 @@
     <Compile Include="Scopes.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UserService\UserService.cs" />
+    <Compile Include="WCF\IWCFUserManagementService.cs" />
+    <Compile Include="WCF\WCFUserManagementService.svc.cs">
+      <DependentUpon>WCFUserManagementService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Packages\" />

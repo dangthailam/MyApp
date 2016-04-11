@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsApplication", "JsApplication\JsApplication.csproj", "{C0EEEAD1-1440-4002-96AD-D3DAF0ABC5C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApplication.JsClient", "JsApplication\MyApplication.JsClient.csproj", "{C0EEEAD1-1440-4002-96AD-D3DAF0ABC5C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{84AB3ADA-7215-4A4A-8453-37A88E191940}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{6DA8A02D-A61C-49CA-863D-6D9AA101D7E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApplication.PublicAPI", "Api\MyApplication.PublicAPI.csproj", "{6DA8A02D-A61C-49CA-863D-6D9AA101D7E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{AE58F010-DD94-4E7E-9918-02EE0E6AE945}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApplication.DAL", "DAL\MyApplication.DAL.csproj", "{AE58F010-DD94-4E7E-9918-02EE0E6AE945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{50F5FAB2-D4C1-4099-86A4-88C5556A6523}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApplication.DTO", "DTO\MyApplication.DTO.csproj", "{F1F62B15-C4B3-4141-9714-2CA21D5D9F27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{F1F62B15-C4B3-4141-9714-2CA21D5D9F27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.Services", "MyApp.Services\MyApp.Services.csproj", "{8248CDDE-0CEB-45AC-8E0B-589E85AD66D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApplication.PrivateAPI", "MyApplication.PrivateAPI\MyApplication.PrivateAPI.csproj", "{0881E9B2-E784-4813-9ADC-20EB59A5A44F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{84AB3ADA-7215-4A4A-8453-37A88E191940} = {84AB3ADA-7215-4A4A-8453-37A88E191940}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +42,18 @@ Global
 		{AE58F010-DD94-4E7E-9918-02EE0E6AE945}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE58F010-DD94-4E7E-9918-02EE0E6AE945}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE58F010-DD94-4E7E-9918-02EE0E6AE945}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50F5FAB2-D4C1-4099-86A4-88C5556A6523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50F5FAB2-D4C1-4099-86A4-88C5556A6523}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50F5FAB2-D4C1-4099-86A4-88C5556A6523}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50F5FAB2-D4C1-4099-86A4-88C5556A6523}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1F62B15-C4B3-4141-9714-2CA21D5D9F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1F62B15-C4B3-4141-9714-2CA21D5D9F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1F62B15-C4B3-4141-9714-2CA21D5D9F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1F62B15-C4B3-4141-9714-2CA21D5D9F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8248CDDE-0CEB-45AC-8E0B-589E85AD66D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8248CDDE-0CEB-45AC-8E0B-589E85AD66D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8248CDDE-0CEB-45AC-8E0B-589E85AD66D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8248CDDE-0CEB-45AC-8E0B-589E85AD66D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0881E9B2-E784-4813-9ADC-20EB59A5A44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0881E9B2-E784-4813-9ADC-20EB59A5A44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0881E9B2-E784-4813-9ADC-20EB59A5A44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0881E9B2-E784-4813-9ADC-20EB59A5A44F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

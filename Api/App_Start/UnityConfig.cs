@@ -1,10 +1,8 @@
+using App.Services.User;
 using DAL;
 using DAL.DataContext;
-using DAL.Repository;
-using DAL.UnitOfWork;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
-using Services.User;
 using System;
 using System.Web.Http;
 using Unity.WebApi;
@@ -44,9 +42,7 @@ namespace Api
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IUnitOfWork, UnitOfWork>()
-                .RegisterType(typeof(IRepository<>), typeof(Repository<>))
-                .RegisterType<IDbContext, ApplicationDbContext>()
+            container.RegisterType<IDbContext, ApplicationDbContext>()
                 .RegisterType<IUserService, UserService>()
                 .RegisterInstance(typeof(HttpConfiguration), GlobalConfiguration.Configuration);
         }
