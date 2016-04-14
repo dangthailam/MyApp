@@ -1,4 +1,4 @@
-using App.Services.User;
+using MyApp.Services.User;
 using DAL;
 using DAL.DataContext;
 using Microsoft.Practices.ServiceLocation;

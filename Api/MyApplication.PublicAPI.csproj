@@ -243,10 +243,6 @@
       <Project>{8248cdde-0ceb-45ac-8e0b-589e85ad66d6}</Project>
       <Name>MyApp.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Services\Services.csproj">
-      <Project>{50f5fab2-d4c1-4099-86a4-88c5556a6523}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201603251503558_Version-0.0.1.resx">
